@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Repositorio } from '../models/repositorio';
 
 @Injectable({ providedIn: 'root' })
@@ -13,7 +14,9 @@ export class RepositoriosService {
     return this.http.get<Repositorio[]>(this.url);
   }
 
-  getRepositorio(id: number): Observable<Repositorio[]> {
-    return this.http.get<Repositorio[]>(this.url);
+  getRepositorio(id: number): Observable<Repositorio | undefined> {
+    return this.http.get<Repositorio[]>(this.url).pipe(
+      map(repos => repos.find(r => r.id === id))
+    );
   }
 }

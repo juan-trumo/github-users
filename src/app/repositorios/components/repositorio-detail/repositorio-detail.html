@@ -1,0 +1,35 @@
+<div class="detail-page" *ngIf="repositorio$ | async as repo; else loading">
+  <button class="btn-back" (click)="volver()">← Volver</button>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <h1 class="repo-name">{{ repo.name }}</h1>
+      <span class="lang-badge">{{ repo.language }}</span>
+    </div>
+
+    <p class="repo-desc">{{ repo.description }}</p>
+
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="info-label">⭐ Estrellas</span>
+        <span class="info-value">{{ repo.stars }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">📅 Creado</span>
+        <span class="info-value">{{ repo.createdAt | date:'longDate' }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">👤 Owner ID</span>
+        <span class="info-value">#{{ repo.ownerId }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">🔢 ID</span>
+        <span class="info-value">#{{ repo.id }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading">Cargando repositorio...</div>
+</ng-template>
