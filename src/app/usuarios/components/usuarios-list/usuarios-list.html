@@ -1,0 +1,16 @@
+<div class="usuarios-page">
+  <h1 class="page-title">GitHub Users</h1>
+  <div class="usuarios-grid">
+    <div class="user-card" *ngFor="let u of usuarios$ | async">
+      <img [src]="u.avatarUrl" [alt]="u.name" class="avatar" />
+      <div class="user-info">
+        <h3 class="user-name">{{ u.name }}</h3>
+        <span class="user-username">@{{ u.username }}</span>
+        <span class="badge" [ngClass]="'badge-' + u.role">{{ u.role }}</span>
+        <p class="user-location">📍 {{ u.location }}</p>
+        <p class="user-email">{{ u.email }}</p>
+        <p class="user-repos">{{ u.repoIds.length }} repositorios</p>
+      </div>
+    </div>
+  </div>
+</div>
