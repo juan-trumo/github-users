@@ -1,7 +1,7 @@
 <div class="usuarios-page">
   <h1 class="page-title">GitHub Users</h1>
   <div class="usuarios-grid">
-    <div class="user-card" *ngFor="let u of usuarios$ | async">
+    <div class="user-card" *ngFor="let u of usuarios$ | async" (click)="verDetalle(u)">
       <img [src]="u.avatarUrl" [alt]="u.name" class="avatar" />
       <div class="user-info">
         <h3 class="user-name">{{ u.name }}</h3>
@@ -14,3 +14,9 @@
     </div>
   </div>
 </div>
+
+<app-usuario-detail
+  *ngIf="seleccionado"
+  [usuario]="seleccionado"
+  (cerrar)="cerrarDetalle()">
+</app-usuario-detail>

@@ -1,0 +1,28 @@
+<div class="detail-overlay" (click)="cerrar.emit()">
+  <div class="detail-card" (click)="$event.stopPropagation()">
+    <button class="btn-close" (click)="cerrar.emit()">✕</button>
+    <img [src]="usuario.avatarUrl" [alt]="usuario.name" class="detail-avatar" />
+    <h2 class="detail-name">{{ usuario.name }}</h2>
+    <span class="detail-username">@{{ usuario.username }}</span>
+    <span class="badge" [ngClass]="'badge-' + usuario.role">{{ usuario.role }}</span>
+
+    <div class="detail-info">
+      <div class="info-row">
+        <span class="info-label">Email</span>
+        <span>{{ usuario.email }}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Ubicación</span>
+        <span>📍 {{ usuario.location }}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Repositorios</span>
+        <span>{{ usuario.repoIds.length }}</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">ID</span>
+        <span>#{{ usuario.id }}</span>
+      </div>
+    </div>
+  </div>
+</div>

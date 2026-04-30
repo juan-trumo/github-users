@@ -11,10 +11,19 @@ import { UsuariosService } from '../../services/usuarios';
 })
 export class UsuariosList implements OnInit {
   usuarios$!: Observable<Usuario[]>;
+  seleccionado: Usuario | null = null;
 
   constructor(private service: UsuariosService) {}
 
   ngOnInit(): void {
     this.usuarios$ = this.service.getUsuarios();
+  }
+
+  verDetalle(u: Usuario): void {
+    this.seleccionado = u;
+  }
+
+  cerrarDetalle(): void {
+    this.seleccionado = null;
   }
 }
